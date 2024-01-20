@@ -4,6 +4,8 @@
 
 package com.mycompany.mavenproject1;
 
+import com.mycompany.mavenproject1.igu.Principal;
+
 /**
  *
  * @author Usuario
@@ -11,6 +13,8 @@ package com.mycompany.mavenproject1;
 public class Mavenproject1 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Principal princ = new Principal();
+        princ.setVisible(true);
+        princ.setLocationRelativeTo(null);
     }
 }
