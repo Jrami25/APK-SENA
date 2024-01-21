@@ -1,6 +1,7 @@
 
 package com.mycompany.mavenproject1.logica;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
