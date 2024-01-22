@@ -18,21 +18,24 @@ public class Car implements Serializable {
     private String brand;
     private String model;
     private String registrationf;
+    private String Description;
     @OneToOne
     private Owner unOwner;
 
     public Car() {
     }
 
-    public Car(int num_owner, String type, String brand, String model, String registrationf, Owner unOwner) {
+    public Car(int num_owner, String type, String brand, String model, String registrationf, String Description, Owner unOwner) {
         this.num_owner = num_owner;
         this.type = type;
         this.brand = brand;
         this.model = model;
         this.registrationf = registrationf;
+        this.Description = Description;
         this.unOwner = unOwner;
     }
 
+    
     public int getNum_owner() {
         return num_owner;
     }
@@ -79,6 +82,14 @@ public class Car implements Serializable {
 
     public void setUnOwner(Owner unOwner) {
         this.unOwner = unOwner;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String Description) {
+        this.Description = Description;
     }
 
     

@@ -1,7 +1,14 @@
 
 package com.mycompany.mavenproject1.igu;
+
+import com.mycompany.mavenproject1.logica.Controladora;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 public class CargarDatos extends javax.swing.JFrame {
 
+    Controladora control = new Controladora();
+    
     public CargarDatos() {
         initComponents();
     }
@@ -26,7 +33,7 @@ public class CargarDatos extends javax.swing.JFrame {
         txtRegistrationf = new javax.swing.JTextField();
         txtDescription = new javax.swing.JTextField();
         txtOwnersName = new javax.swing.JTextField();
-        txtID = new javax.swing.JTextField();
+        txtCC = new javax.swing.JTextField();
         txtDate = new javax.swing.JTextField();
         buttonSave = new javax.swing.JButton();
         buttonClean = new javax.swing.JButton();
@@ -57,13 +64,18 @@ public class CargarDatos extends javax.swing.JFrame {
 
         jLabel9.setText("Cedula:");
 
-        txtID.addActionListener(new java.awt.event.ActionListener() {
+        txtCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIDActionPerformed(evt);
+                txtCCActionPerformed(evt);
             }
         });
 
         buttonSave.setText("Guardar");
+        buttonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSaveActionPerformed(evt);
+            }
+        });
 
         buttonClean.setText("Limpiar ");
         buttonClean.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +120,7 @@ public class CargarDatos extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtOwnersName, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                                    .addComponent(txtID)
+                                    .addComponent(txtCC)
                                     .addComponent(txtDate)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(47, 47, 47)
@@ -136,7 +148,7 @@ public class CargarDatos extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,7 +186,7 @@ public class CargarDatos extends javax.swing.JFrame {
 
     private void buttonCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCleanActionPerformed
        txtBrand.setText("");
-       txtID.setText("");
+       txtCC.setText("");
        txtDate.setText("");
        txtDescription.setText("");
        txtModel.setText("");
@@ -183,9 +195,28 @@ public class CargarDatos extends javax.swing.JFrame {
        txtType.setText("");
     }//GEN-LAST:event_buttonCleanActionPerformed
 
-    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+    private void txtCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDActionPerformed
+    }//GEN-LAST:event_txtCCActionPerformed
+
+    private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
+    String mark = txtBrand.getText();
+    String ced = txtCC.getText();
+    String date = txtDate.getText();
+    String descrip = txtDescription.getText();
+    String model = txtModel.getText();
+    String registr = txtRegistrationf.getText();
+    String ownersname = txtOwnersName.getText();
+    String type = txtType.getText();
+    
+    control.guardar(mark, ced, date, descrip, model, registr, ownersname, type);
+    
+    JOptionPane optionPane = new JOptionPane("Datos guardados correctamente");
+    optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+    JDialog dialog = optionPane.createDialog("Guardado exitoso");
+    dialog.setAlwaysOnTop(true);
+    dialog.setVisible(true);
+    }//GEN-LAST:event_buttonSaveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonClean;
@@ -201,9 +232,9 @@ public class CargarDatos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtBrand;
+    private javax.swing.JTextField txtCC;
     private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtDescription;
-    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtModel;
     private javax.swing.JTextField txtOwnersName;
     private javax.swing.JTextField txtRegistrationf;

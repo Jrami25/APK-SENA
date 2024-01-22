@@ -2,6 +2,7 @@
 package com.mycompany.mavenproject1.logica;
 
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,29 +11,29 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Owner {
+public class Owner implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int IDowner;
+    private int idOwner;
     private String cc_owner;
     private String ownersname;
 
     public Owner() {
     }
 
-    public Owner(int IDowner, String cc_owner, String ownersname) {
-        this.IDowner = IDowner;
+    public Owner(int idOwner, String cc_owner, String ownersname) {
+        this.idOwner = idOwner;
         this.cc_owner = cc_owner;
         this.ownersname = ownersname;
     }
 
-    public int getIDowner() {
-        return IDowner;
+    public int getIdOwner() {
+        return idOwner;
     }
 
-    public void setIDowner(int IDowner) {
-        this.IDowner = IDowner;
+    public void setIdOwner(int idOwner) {
+        this.idOwner = idOwner;
     }
 
     public String getCc_owner() {
@@ -50,6 +51,8 @@ public class Owner {
     public void setOwnersname(String ownersname) {
         this.ownersname = ownersname;
     }
+
+    
     
     
     

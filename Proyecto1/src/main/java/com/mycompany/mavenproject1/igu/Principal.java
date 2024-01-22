@@ -30,7 +30,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         buttonQuit = new javax.swing.JButton();
-        buttonSaveData = new javax.swing.JButton();
+        btnCargaDatos = new javax.swing.JButton();
         buttonSeeData = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -42,11 +42,11 @@ public class Principal extends javax.swing.JFrame {
         buttonQuit.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         buttonQuit.setText("Salir");
 
-        buttonSaveData.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        buttonSaveData.setText("Cargar Datos");
-        buttonSaveData.addActionListener(new java.awt.event.ActionListener() {
+        btnCargaDatos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnCargaDatos.setText("Cargar Datos");
+        btnCargaDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSaveDataActionPerformed(evt);
+                btnCargaDatosActionPerformed(evt);
             }
         });
 
@@ -71,7 +71,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                     .addContainerGap(48, Short.MAX_VALUE)
-                    .addComponent(buttonSaveData, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCargaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(26, 26, 26)))
         );
         jPanel2Layout.setVerticalGroup(
@@ -85,7 +85,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(37, 37, 37)
-                    .addComponent(buttonSaveData, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCargaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(287, Short.MAX_VALUE)))
         );
 
@@ -141,15 +141,15 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonSeeDataActionPerformed
 
-    private void buttonSaveDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveDataActionPerformed
+    private void btnCargaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaDatosActionPerformed
         CargarDatos pantalla = new CargarDatos();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
-    }//GEN-LAST:event_buttonSaveDataActionPerformed
+    }//GEN-LAST:event_btnCargaDatosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCargaDatos;
     private javax.swing.JButton buttonQuit;
-    private javax.swing.JButton buttonSaveData;
     private javax.swing.JButton buttonSeeData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

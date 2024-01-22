@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.mavenproject1.persistencia;
 
-/**
- *
- * @author Usuario
- */
+import com.mycompany.mavenproject1.logica.Car;
+import com.mycompany.mavenproject1.logica.Owner;
+
+
 public class ControladoraPersistencia {
     
+    OwnerJpaController ownerJpa = new OwnerJpaController();
+    CarJpaController carJpa = new CarJpaController();
+    
+    public void guardar(Owner duenio, Car owcar){
+        
+        ownerJpa.create(duenio);
+        carJpa.create(owcar);
+        
+    }
 }

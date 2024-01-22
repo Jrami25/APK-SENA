@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.mavenproject1.persistencia;
 
-import com.mycompany.mavenproject1.logica.Car;
+import com.mycompany.mavenproject1.logica.Owner;
 import com.mycompany.mavenproject1.persistencia.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
@@ -20,27 +17,28 @@ import javax.persistence.criteria.Root;
  *
  * @author Usuario
  */
-public class CarJpaController implements Serializable {
+public class OwnerJpaController implements Serializable {
 
-    public CarJpaController(EntityManagerFactory emf) {
+    public OwnerJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     
     private EntityManagerFactory emf = null;
 
-    public CarJpaController() {
+    public OwnerJpaController() {
         emf = Persistence.createEntityManagerFactory("TallermecanicoPU");
     }
+    
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
-    public void create(Car car) {
+    public void create(Owner owner) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(car);
+            em.persist(owner);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -49,19 +47,19 @@ public class CarJpaController implements Serializable {
         }
     }
 
-    public void edit(Car car) throws NonexistentEntityException, Exception {
+    public void edit(Owner owner) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            car = em.merge(car);
+            owner = em.merge(owner);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = car.getNum_owner();
-                if (findCar(id) == null) {
-                    throw new NonexistentEntityException("The car with id " + id + " no longer exists.");
+                int id = owner.getIdOwner();
+                if (findOwner(id) == null) {
+                    throw new NonexistentEntityException("The owner with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -77,14 +75,14 @@ public class CarJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Car car;
+            Owner owner;
             try {
-                car = em.getReference(Car.class, id);
-                car.getNum_owner();
+                owner = em.getReference(Owner.class, id);
+                owner.getIdOwner();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The car with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The owner with id " + id + " no longer exists.", enfe);
             }
-            em.remove(car);
+            em.remove(owner);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -93,19 +91,19 @@ public class CarJpaController implements Serializable {
         }
     }
 
-    public List<Car> findCarEntities() {
-        return findCarEntities(true, -1, -1);
+    public List<Owner> findOwnerEntities() {
+        return findOwnerEntities(true, -1, -1);
     }
 
-    public List<Car> findCarEntities(int maxResults, int firstResult) {
-        return findCarEntities(false, maxResults, firstResult);
+    public List<Owner> findOwnerEntities(int maxResults, int firstResult) {
+        return findOwnerEntities(false, maxResults, firstResult);
     }
 
-    private List<Car> findCarEntities(boolean all, int maxResults, int firstResult) {
+    private List<Owner> findOwnerEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Car.class));
+            cq.select(cq.from(Owner.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -117,20 +115,20 @@ public class CarJpaController implements Serializable {
         }
     }
 
-    public Car findCar(int id) {
+    public Owner findOwner(int id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Car.class, id);
+            return em.find(Owner.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getCarCount() {
+    public int getOwnerCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Car> rt = cq.from(Car.class);
+            Root<Owner> rt = cq.from(Owner.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
