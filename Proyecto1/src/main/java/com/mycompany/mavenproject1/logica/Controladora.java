@@ -22,4 +22,14 @@ public class Controladora {
         
         controlPersis.guardar( duenio, owcar);
     }
+    public List<Carros> dataCar(){
+        
+        return controlPersis.dataCar();
+}
+        public void borrarCar(int CC_Owner){
+            controlPersis.borrarCar(num_car);
+        }
+        public Car cargarDatos(int CC_Owner){
+        return controlPersis.cargarDatos(CC_Owner);
+    }
 }
